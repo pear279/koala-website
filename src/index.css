@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-neon-lime: #bef264;
+  --color-neon-orange: #fb923c;
+  --color-neon-blue: #38bdf8;
+  --color-quirky-black: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply bg-quirky-black text-white font-sans selection:bg-neon-lime selection:text-quirky-black;
+    cursor: none;
+  }
+}
+
+.quirky-border {
+  border: 2px solid white;
+  box-shadow: 4px 4px 0px white;
+}
+
+.quirky-border:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--color-neon-lime);
+}
+
+.marquee-text {
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Custom Cursor Styles */
+#custom-cursor {
+  width: 20px;
+  height: 20px;
+  background: var(--color-neon-lime);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out;
+}
+
+#custom-cursor-follower {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-neon-blue);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.2s ease-out;
+}
